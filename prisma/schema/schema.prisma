@@ -14,3 +14,12 @@ datasource db {
     url       = env("DATABASE_URL")
     directUrl = env("DIRECT_URL")
 }
+
+// ERD CONFIG:
+generator erd {
+    provider                  = "prisma-erd-generator"
+    output                    = "../database.md"
+    includeRelationFromFields = true
+}
+
+/////
