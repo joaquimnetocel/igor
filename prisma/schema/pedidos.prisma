@@ -1,0 +1,21 @@
+model tabelaPedidosDeCompra {
+    idPedidoDeCompra String @id @default(cuid())
+
+    campoCriadoEm DateTime @default(now())
+
+    keyFornecedor String?
+
+    conexaoMovimentacoes tabelaMovimentacoes[]
+    conexaoFornecedor    tabelaFornecedores?   @relation(fields: [keyFornecedor], references: [idFornecedor], onDelete: SetNull, onUpdate: Cascade)
+}
+
+model tabelaPedidosDeVenda {
+    idPedidoDeVenda String @id @default(cuid())
+
+    campoCriadoEm DateTime @default(now())
+
+    keyCliente String?
+
+    conexaoMovimentacoes tabelaMovimentacoes[]
+    conexaoCliente       tabelaClientes?       @relation(fields: [keyCliente], references: [idCliente], onDelete: SetNull, onUpdate: Cascade)
+}

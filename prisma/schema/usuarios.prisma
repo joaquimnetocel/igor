@@ -1,7 +1,0 @@
-model modeloUsuarios {
-    campoId    Int    @id @default(autoincrement())
-    campoNome  String @db.VarChar(300)
-    campoIdade Int
-
-    @@map("tabelaUsuarios")
-}

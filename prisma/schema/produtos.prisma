@@ -1,0 +1,15 @@
+model tabelaProdutos {
+    idProduto String @id @default(cuid())
+
+    campoNome          String
+    campoDescricao     String?
+    campoPrecoDeVenda  Decimal
+    campoCustoUnitario Decimal
+    campoCriadoEm      DateTime @default(now())
+    campoAtualizadoEm  DateTime @updatedAt
+
+    keyFornecedor String?
+
+    conexaoMovimentacoes tabelaMovimentacoes[]
+    conexaoFornecedor    tabelaFornecedores?   @relation(fields: [keyFornecedor], references: [idFornecedor], onDelete: Cascade, onUpdate: Cascade)
+}

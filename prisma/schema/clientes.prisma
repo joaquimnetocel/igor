@@ -1,0 +1,9 @@
+model tabelaClientes {
+    idCliente String @id @default(cuid())
+
+    campoNome         String
+    campoCriadoEm     DateTime @default(now())
+    campoAtualizadoEm DateTime @updatedAt
+
+    conexaoPedidosDeVenda tabelaPedidosDeVenda[]
+}

@@ -1,0 +1,9 @@
+model tabelaFornecedores {
+    idFornecedor String @id @default(cuid())
+
+    campoNome     String
+    campoTelefone String?
+
+    conexaoProdutos        tabelaProdutos[]
+    conexaoPedidosDeCompra tabelaPedidosDeCompra[]
+}

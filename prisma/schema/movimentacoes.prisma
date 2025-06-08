@@ -1,0 +1,24 @@
+model tabelaMovimentacoes {
+    idMovimentacao String @id @default(cuid())
+
+    campoTipo       enumTipoMovimentacao
+    campoPreco      Decimal
+    campoCusto      Decimal
+    campoQuantidade Int
+    campoCriadoEm   DateTime             @default(now())
+
+    keyProduto        String?
+    keyPedidoDeCompra String?
+    keyPedidoDeVenda  String?
+
+    conexaoProdutos       tabelaProdutos?        @relation(fields: [keyProduto], references: [idProduto], onUpdate: Cascade, onDelete: SetNull)
+    conexaoPedidoDeCompra tabelaPedidosDeCompra? @relation(fields: [keyPedidoDeCompra], references: [idPedidoDeCompra], onDelete: Cascade, onUpdate: Cascade)
+    conexaoPedidoDeVenda  tabelaPedidosDeVenda?  @relation(fields: [keyPedidoDeVenda], references: [idPedidoDeVenda], onDelete: Cascade, onUpdate: Cascade)
+}
+
+enum enumTipoMovimentacao {
+    enumCompra
+    enumVenda
+    enumDevolucao
+    enumPerda
+}
